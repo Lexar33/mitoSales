@@ -1,30 +1,24 @@
 package org.jalcantararivera.mitosales.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-//@Table(schema = "tbl_category")
-public class Category {
+public class Role {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer idCategory;
-    //@Column(name="category_name",nullable = false,length = 50)
-    @Column(nullable = false,length = 50)
+    private Integer idRole;
+    @Column(length = 10,nullable = false)
     private String name;
-    @Column(nullable = false,length = 50)
-    private String description;
     @Column(nullable = false)
     private boolean enabled;
 }
-

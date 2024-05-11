@@ -6,25 +6,28 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-//@Table(schema = "tbl_category")
-public class Category {
+@Table(name="user_data")
+public class User {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer idCategory;
-    //@Column(name="category_name",nullable = false,length = 50)
-    @Column(nullable = false,length = 50)
-    private String name;
-    @Column(nullable = false,length = 50)
-    private String description;
+    private Integer idUser;
+
+    @ManyToOne // FK
+    @JoinColumn(name="id_role",nullable = false,foreignKey = @ForeignKey(name="FK_USER_ROLE"))
+    private Role role;
+
+    @Column(length = 50,nullable = false,unique = true)
+    private String username;
+
+    @Column(length = 60,nullable = false) // 123 $ena123adsad Bcrypt
+    private String password;
+
     @Column(nullable = false)
     private boolean enabled;
 }
-

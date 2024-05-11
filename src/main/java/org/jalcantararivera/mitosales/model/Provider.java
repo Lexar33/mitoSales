@@ -6,25 +6,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-//@Table(schema = "tbl_category")
-public class Category {
+public class Provider {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer idCategory;
-    //@Column(name="category_name",nullable = false,length = 50)
-    @Column(nullable = false,length = 50)
+    private Integer idProvider;
+    @Column(length = 30,nullable = false)
     private String name;
-    @Column(nullable = false,length = 50)
-    private String description;
+    @Column(length = 150,nullable = false)
+    private String address;
     @Column(nullable = false)
-    private boolean enabled;
-}
+    private String enabled;
 
+}
