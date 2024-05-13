@@ -20,6 +20,7 @@ public class Category {
     @EqualsAndHashCode.Include
     private Integer idCategory;
     //@Column(name="category_name",nullable = false,length = 50)
+    //@Column(nullable = false,length = 50,updatable = false)
     @Column(nullable = false,length = 50)
     private String name;
     @Column(nullable = false,length = 50)

@@ -1,17 +1,26 @@
-package org.jalcantararivera.mitosales.service;
+package org.jalcantararivera.mitosales.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.jalcantararivera.mitosales.model.Category;
 import org.jalcantararivera.mitosales.repo.ICategoryRepo;
+import org.jalcantararivera.mitosales.repo.IGenericRepo;
+import org.jalcantararivera.mitosales.service.ICategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl implements ICategoryService {
+public class CategoryServiceImpl extends GenericServiceImpl<Category,Integer> implements ICategoryService {
 
     private final ICategoryRepo repo;
+
+    @Override
+    protected IGenericRepo<Category, Integer> getRepo() {
+        return repo;
+    }
+
+
     //@Autowired
     //private CategoryRepo repo;
     //INYECCION POR CONSTRUCTOR
@@ -21,7 +30,7 @@ public class CategoryServiceImpl implements ICategoryService {
     }
     */
 
-/*
+    /*
     public Category validateCategory(Category category){
         //repo = new CategoryRepo();
 
@@ -32,9 +41,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
         }
     }
-*/
+    */
 
-
+    /*
     @Override
     public Category save(Category category) throws Exception {
         return repo.save(category);
@@ -61,4 +70,5 @@ public class CategoryServiceImpl implements ICategoryService {
     public void delete(Integer id) throws Exception {
         repo.deleteById(id);
     }
+    */
 }
