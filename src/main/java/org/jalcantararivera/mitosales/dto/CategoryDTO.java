@@ -17,7 +17,7 @@ public class CategoryDTO {
     @Size(min=3,max=30)
     //@Pattern(regexp="[0-9]+")
     //@Email
-    private String nameCategory;
+    private String nameofCategory;
     @NotNull
     private String descriptionCategory;
     @NotNull

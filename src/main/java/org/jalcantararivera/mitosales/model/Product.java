@@ -29,5 +29,7 @@ public class Product{
     private String description;
     @Column(columnDefinition = "decimal(6,2)",nullable = false)
     private double price;
+    @Column(nullable = false)
+    private boolean enabled;
 
 }

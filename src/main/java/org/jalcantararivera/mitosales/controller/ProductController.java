@@ -3,10 +3,10 @@ package org.jalcantararivera.mitosales.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.jalcantararivera.mitosales.dto.CategoryDTO;
+import org.jalcantararivera.mitosales.dto.ProductDTO;
 import org.jalcantararivera.mitosales.dto.GenericResponse;
-import org.jalcantararivera.mitosales.model.Category;
-import org.jalcantararivera.mitosales.service.ICategoryService;
+import org.jalcantararivera.mitosales.model.Product;
+import org.jalcantararivera.mitosales.service.IProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -17,39 +17,39 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/products")
 @RequiredArgsConstructor
 
-public class CategoryController {
+public class ProductController {
 
-    //private final CategoryServiceImpl service;
-    private final ICategoryService service;
-    @Qualifier("categoryMapper")
+    //private final ProductServiceImpl service;
+    private final IProductService service;
+    @Qualifier("defaultMapper")
     private final ModelMapper modelMapper;
     //INYECCION CON AUTOWIRED
     //@Autowired
-    //private CategoryService service;
+    //private ProductService service;
 
     //INYECCION POR CONSTRUCTOR
     /*
-    public CategoryController(CategoryService service){
+    public ProductController(ProductService service){
 
         this.service=service;
     }
     */
     /*
     @GetMapping
-    public Category getCategorySimple(){
-        //service= new CategoryService();
-        return service.validateCategory(new Category(1,"TV","Television",true));
+    public Product getProductSimple(){
+        //service= new ProductService();
+        return service.validateProduct(new Product(1,"TV","Television",true));
     }
     */
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>>  readAll() throws  Exception{
+    public ResponseEntity<List<ProductDTO>>  readAll() throws  Exception{
         //ModelMapper modelMapper= new ModelMapper();
-        List<CategoryDTO>list=service.readAll().stream().map(this::convertToDto).toList();
-        /*List<CategoryRecord>list2=service.readAll().stream().map(e->new CategoryRecord(
-                        e.getIdCategory(),
+        List<ProductDTO>list=service.readAll().stream().map(this::convertToDto).toList();
+        /*List<ProductRecord>list2=service.readAll().stream().map(e->new ProductRecord(
+                        e.getIdProduct(),
                         e.getName(),
                         e.getDescription(),
                         e.isEnabled())).
@@ -60,25 +60,25 @@ public class CategoryController {
 
     /*
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDTO> readById(@PathVariable("id") Integer id) throws Exception{
-        Category obj= service.readById(id);
+    public ResponseEntity<ProductDTO> readById(@PathVariable("id") Integer id) throws Exception{
+        Product obj= service.readById(id);
         return ResponseEntity.ok(convertToDto(obj));
     }
     */
     @GetMapping("/{id}")
-    public ResponseEntity<GenericResponse<CategoryDTO>> readById(@PathVariable("id") Integer id) throws Exception{
-        Category obj= service.readById(id);
+    public ResponseEntity<GenericResponse<ProductDTO>> readById(@PathVariable("id") Integer id) throws Exception{
+        Product obj= service.readById(id);
         return ResponseEntity.ok(new GenericResponse<>(200,"SUCCESS", Arrays.asList(convertToDto(obj))));
     }
     @PostMapping
-    public ResponseEntity<CategoryDTO> save(@Valid @RequestBody CategoryDTO dto) throws  Exception{
-        Category obj= service.save(convertToEntity(dto));
+    public ResponseEntity<ProductDTO> save(@Valid @RequestBody ProductDTO dto) throws  Exception{
+        Product obj= service.save(convertToEntity(dto));
         return new ResponseEntity<>(convertToDto(obj), HttpStatus.CREATED);
         //return new ResponseEntity.created();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryDTO> update(@Valid @RequestBody CategoryDTO dto,@PathVariable("id") Integer id ) throws Exception{
-        Category obj= service.update(convertToEntity(dto),id);
+    public ResponseEntity<ProductDTO> update(@Valid @RequestBody ProductDTO dto,@PathVariable("id") Integer id ) throws Exception{
+        Product obj= service.update(convertToEntity(dto),id);
         return ResponseEntity.ok(convertToDto(obj));
      }
 
@@ -91,11 +91,11 @@ public class CategoryController {
 
 
     ////////////////////////////////////////////////////
-    private CategoryDTO convertToDto(Category obj){
-        return modelMapper.map(obj,CategoryDTO.class);
+    private ProductDTO convertToDto(Product obj){
+        return modelMapper.map(obj,ProductDTO.class);
     }
-    private Category convertToEntity(CategoryDTO dto){
-        return modelMapper.map(dto,Category.class);
+    private Product convertToEntity(ProductDTO dto){
+        return modelMapper.map(dto,Product.class);
     }
 
 

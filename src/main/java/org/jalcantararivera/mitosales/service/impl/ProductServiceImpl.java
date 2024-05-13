@@ -19,5 +19,4 @@ public class ProductServiceImpl extends GenericServiceImpl<Product,Integer> impl
         return repo;
     }
 
-
 }
