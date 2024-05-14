@@ -26,7 +26,7 @@ public class SaleDetail {
     @Column(nullable = false)
     private short quantity;
     @Column(columnDefinition = "decimal(6,2)",nullable = false)
-    private double SalePrice;
+    private double salePrice;
     @Column(columnDefinition = "decimal(6,2)",nullable = false)
     private double discount;
 
