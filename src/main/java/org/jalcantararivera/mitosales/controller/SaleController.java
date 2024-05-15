@@ -4,6 +4,7 @@ package org.jalcantararivera.mitosales.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.jalcantararivera.mitosales.dto.GenericResponse;
+import org.jalcantararivera.mitosales.dto.ProcedureDTO;
 import org.jalcantararivera.mitosales.dto.SaleDTO;
 import org.jalcantararivera.mitosales.model.Sale;
 import org.jalcantararivera.mitosales.service.ISaleService;
@@ -67,5 +68,12 @@ public class SaleController {
         return modelMapper.map(dto,Sale.class);
     }
 
+    ////////////////////////////////////////////////////
+
+    @GetMapping("/resume")
+    public ResponseEntity<List<ProcedureDTO>> get() throws Exception{
+        List<ProcedureDTO> list = service.callProcedure();
+        return ResponseEntity.ok(list);
+    }
 
 }

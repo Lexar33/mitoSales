@@ -20,6 +20,21 @@ public class CategoryServiceImpl extends GenericServiceImpl<Category,Integer> im
         return repo;
     }
 
+    @Override
+    public List<Category> findByNameService(String name) {
+        return repo.findByNameLike("%"+name+"%");
+    }
+
+    @Override
+    public List<Category> findByNameAndEnabledService(String name, boolean enabled) {
+        return repo.findByNameAndEnabled(name,enabled);
+    }
+
+    @Override
+    public List<Category> getByNameAndDescriptionService(String name, String description) {
+        return repo.getNameAndDescription2(name,description);
+    }
+
 
     //@Autowired
     //private CategoryRepo repo;

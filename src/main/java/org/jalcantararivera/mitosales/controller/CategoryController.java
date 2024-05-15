@@ -89,7 +89,6 @@ public class CategoryController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
     ////////////////////////////////////////////////////
     private CategoryDTO convertToDto(Category obj){
         return modelMapper.map(obj,CategoryDTO.class);
@@ -98,5 +97,24 @@ public class CategoryController {
         return modelMapper.map(dto,Category.class);
     }
 
+    ////////////////////////////////////////////////////
+    @GetMapping("find/name/{name}")
+    public ResponseEntity<List<CategoryDTO>> findByName(@PathVariable("name")String name){
+        List<CategoryDTO> list= service.findByNameService(name).stream().map(this::convertToDto).toList();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("find/name/{name}/{enabled}")
+    public ResponseEntity<List<CategoryDTO>> findByNameEnabled(@PathVariable("name")String name,@PathVariable("enabled")Boolean enabled){
+        List<CategoryDTO> list= service.findByNameAndEnabledService(name,enabled).stream().map(this::convertToDto).toList();
+        return ResponseEntity.ok(list);
+    }
+    @GetMapping("/get/name/description")
+    public ResponseEntity<List<CategoryDTO>> findByNameDescription(@RequestParam("name")String name,@RequestParam("description")String description){
+        List<CategoryDTO> list= service.getByNameAndDescriptionService(name,description).stream().map(this::convertToDto).toList();
+        return ResponseEntity.ok(list);
+    }
+
+    ////////////////////////////////////////////////////
 
 }

@@ -12,8 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
-//@Table(schema = "tbl_category")
+@Entity //(name="categoryEntity")
+//@Table(schema = "sistemas")
+//@Table(name = "tbl_category")
+@Table
 public class Category {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -27,5 +29,10 @@ public class Category {
     private String description;
     @Column(nullable = false)
     private boolean enabled;
+
+    public Category(String name, boolean enabled) {
+        this.name = name;
+        this.enabled = enabled;
+    }
 }
 

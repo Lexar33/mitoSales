@@ -5,7 +5,6 @@ import org.jalcantararivera.mitosales.repo.IGenericRepo;
 import org.jalcantararivera.mitosales.service.IGenericService;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public abstract class GenericServiceImpl<T,ID> implements IGenericService<T,ID> {
 

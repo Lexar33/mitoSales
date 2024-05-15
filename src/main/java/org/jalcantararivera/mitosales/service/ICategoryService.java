@@ -12,5 +12,8 @@ public interface ICategoryService extends IGenericService<Category,Integer> {
     Category readById(Integer id ) throws Exception;
     void delete(Integer id) throws Exception;
 */
+  List<Category> findByNameService(String name);
+  List<Category> findByNameAndEnabledService(String name,boolean enabled);
+  List<Category> getByNameAndDescriptionService(String name,String description);
 
 }
