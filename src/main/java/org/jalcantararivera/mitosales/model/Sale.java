@@ -5,10 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.jalcantararivera.mitosales.dto.ProcedureDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@NamedNativeQuery(
+        name = "Sale.fn_sales",
+        query = "call fn_sales()",
+        resultSetMapping = "Procedure.ProcedureDTO"
+)
+@SqlResultSetMapping(
+        name="Procedure.ProcedureDTO",
+        classes= @ConstructorResult(targetClass = ProcedureDTO.class,
+            columns = {
+                @ColumnResult(name="quantity",type=Integer.class),
+                @ColumnResult(name="datetime", type=String.class)
+            }
+            )
+)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,7 +50,5 @@ public class Sale {
 
     @OneToMany(mappedBy = "sale",cascade = CascadeType.ALL)
     private List<SaleDetail> details;
-
-
 
 }

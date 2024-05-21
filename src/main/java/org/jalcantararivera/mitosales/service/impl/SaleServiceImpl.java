@@ -1,6 +1,7 @@
 package org.jalcantararivera.mitosales.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.jalcantararivera.mitosales.dto.IProcedureDTO;
 import org.jalcantararivera.mitosales.dto.ProcedureDTO;
 import org.jalcantararivera.mitosales.model.Sale;
 import org.jalcantararivera.mitosales.repo.IGenericRepo;
@@ -33,6 +34,16 @@ public class SaleServiceImpl extends GenericServiceImpl<Sale,Integer> implements
             list.add(dto);
         });
         return list;
+    }
+
+    @Override
+    public List<IProcedureDTO> callProcedure2() {
+        return repo.callProcedure2();
+    }
+
+    @Override
+    public List<ProcedureDTO> callProcedure3() {
+        return repo.callProcedure3();
     }
 }
 

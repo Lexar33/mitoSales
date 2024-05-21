@@ -4,6 +4,7 @@ package org.jalcantararivera.mitosales.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.jalcantararivera.mitosales.dto.GenericResponse;
+import org.jalcantararivera.mitosales.dto.IProcedureDTO;
 import org.jalcantararivera.mitosales.dto.ProcedureDTO;
 import org.jalcantararivera.mitosales.dto.SaleDTO;
 import org.jalcantararivera.mitosales.model.Sale;
@@ -71,9 +72,21 @@ public class SaleController {
     ////////////////////////////////////////////////////
 
     @GetMapping("/resume")
-    public ResponseEntity<List<ProcedureDTO>> get() throws Exception{
+    public ResponseEntity<List<ProcedureDTO>> getSaleResume() throws Exception{
         List<ProcedureDTO> list = service.callProcedure();
         return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/resume2")
+    public ResponseEntity<List<IProcedureDTO>> getSaleResume2() throws Exception{
+        //List<IProcedureDTO> list = service.callProcedure2();
+        //return ResponseEntity.ok(list);
+        return new ResponseEntity<>(service.callProcedure2(),HttpStatus.OK);
+    }
+
+    @GetMapping("/resume3")
+    public ResponseEntity<List<ProcedureDTO>> getSaleResume3() {
+        return new ResponseEntity<>(service.callProcedure3(),HttpStatus.OK);
     }
 
 }
