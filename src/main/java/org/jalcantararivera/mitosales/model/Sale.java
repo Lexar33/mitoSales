@@ -18,10 +18,9 @@ import java.util.List;
         name="Procedure.ProcedureDTO",
         classes= @ConstructorResult(targetClass = ProcedureDTO.class,
             columns = {
-                @ColumnResult(name="quantity",type=Integer.class),
+                @ColumnResult(name="quantity",type=Long.class),
                 @ColumnResult(name="datetime", type=String.class)
-            }
-            )
+            })
 )
 @Data
 @AllArgsConstructor
