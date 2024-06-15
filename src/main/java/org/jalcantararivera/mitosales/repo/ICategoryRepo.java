@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public interface ICategoryRepo extends IGenericRepo<Category,Integer> {
-    //QUERIES SENCILLAS
+    //QUERIES DERIVADO (CONSULTAS SENCILLAS)
     //DerivedQueries
     // select * from category c where c.name=''
     List<Category> findByName(String name);
@@ -40,6 +40,8 @@ public interface ICategoryRepo extends IGenericRepo<Category,Integer> {
 
     @Query("SELECT new Category (c.name,c.enabled) FROM Category c where c.name = :name AND c.description LIKE %:description%")
     List<Category> getNameAndDescription2(@Param("name") String name,@Param("description") String description);
+
+
 
     //SQL: NativeQuery
 

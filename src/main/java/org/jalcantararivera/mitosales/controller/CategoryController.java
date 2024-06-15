@@ -9,6 +9,9 @@ import org.jalcantararivera.mitosales.model.Category;
 import org.jalcantararivera.mitosales.service.ICategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -117,4 +120,27 @@ public class CategoryController {
 
     ////////////////////////////////////////////////////
 
+    @GetMapping("/pagination")
+    public ResponseEntity<Page<CategoryDTO>> findpage(Pageable pageable){
+        Page<CategoryDTO> pageCategoryDTO= service.findPage(pageable).map(this::convertToDto);
+        return ResponseEntity.ok(pageCategoryDTO);
+    }
+
+    @GetMapping("/pagination2")
+    public ResponseEntity<Page<CategoryDTO>> findpage(
+            @RequestParam(name="s", defaultValue = "0") int page,
+            @RequestParam(name="p",defaultValue = "3") int size
+    ){
+        Page<CategoryDTO> pageCategoryDTO= service.findPage(PageRequest.of(page,size)).map(this::convertToDto);
+        return ResponseEntity.ok(pageCategoryDTO);
+    }
+
+
+    @GetMapping("/order")
+        public ResponseEntity<List<CategoryDTO>> findAllOrder(
+                @RequestParam(name="param",defaultValue = "ASC") String param)
+        {
+            List<CategoryDTO> list=service.findAllOrder(param).stream().map(this::convertToDto).toList();
+            return ResponseEntity.ok(list);
+        }
 }

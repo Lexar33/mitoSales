@@ -17,20 +17,20 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SaleDTO {
     private Integer idSale;
-    //@NotNull
+    @NotNull
     private ClientDTO client;
     //private Integer idClient;
-    //@NotNull
+    @NotNull
     private UserDTO user;
-    //@NotNull
+    @NotNull
     private LocalDateTime datetime;
-    //@NotNull
-    //@Min(value=1)
+    @NotNull
+    @Min(value=1)
     private double total;
-    //@NotNull
-    //@Min(value=1)
+    @NotNull
+    @Min(value=1)
     private double tax;
-    //@NotNull
+    @NotNull
     private boolean enabled;
     @JsonManagedReference
     @NotNull

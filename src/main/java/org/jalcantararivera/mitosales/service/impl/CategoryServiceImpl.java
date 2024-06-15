@@ -5,6 +5,9 @@ import org.jalcantararivera.mitosales.model.Category;
 import org.jalcantararivera.mitosales.repo.ICategoryRepo;
 import org.jalcantararivera.mitosales.repo.IGenericRepo;
 import org.jalcantararivera.mitosales.service.ICategoryService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +38,16 @@ public class CategoryServiceImpl extends GenericServiceImpl<Category,Integer> im
         return repo.getNameAndDescription2(name,description);
     }
 
+    @Override
+    public Page<Category> findPage(Pageable pageable) {
+        return repo.findAll(pageable);
+    }
+
+    @Override
+    public List<Category> findAllOrder(String param){
+        Sort.Direction direction = param.equalsIgnoreCase("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC;
+        return repo.findAll(Sort.by(direction,"name"));
+    }
 
     //@Autowired
     //private CategoryRepo repo;
