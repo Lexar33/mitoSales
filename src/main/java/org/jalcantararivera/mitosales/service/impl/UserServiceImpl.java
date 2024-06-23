@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl extends GenericServiceImpl<User,Integer> implements IUserService {
+public class UserServiceImpl extends CRUDImpl<User,Integer> implements IUserService {
 
     private final IUserRepo repo;
     @Override

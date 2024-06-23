@@ -11,11 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 @Service
 @RequiredArgsConstructor
-public class SaleServiceImpl extends GenericServiceImpl<Sale,Integer> implements ISaleService {
+public class SaleServiceImpl extends CRUDImpl<Sale,Integer> implements ISaleService {
 
     private final ISaleRepo repo;
     @Override

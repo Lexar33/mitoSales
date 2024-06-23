@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RoleServiceImpl extends GenericServiceImpl<Role,Integer> implements IRoleService {
+public class RoleServiceImpl extends CRUDImpl<Role,Integer> implements IRoleService {
 
     private final IRoleRepo repo;
     @Override

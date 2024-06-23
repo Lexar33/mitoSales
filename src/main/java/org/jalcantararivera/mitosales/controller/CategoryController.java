@@ -27,6 +27,7 @@ public class CategoryController {
 
     //private final CategoryServiceImpl service;
     private final ICategoryService service;
+
     @Qualifier("categoryMapper")
     private final ModelMapper modelMapper;
     //INYECCION CON AUTOWIRED
@@ -81,6 +82,7 @@ public class CategoryController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<CategoryDTO> update(@Valid @RequestBody CategoryDTO dto,@PathVariable("id") Integer id ) throws Exception{
+        //dto.setIdCategory(id);
         Category obj= service.update(convertToEntity(dto),id);
         return ResponseEntity.ok(convertToDto(obj));
      }
@@ -143,4 +145,12 @@ public class CategoryController {
             List<CategoryDTO> list=service.findAllOrder(param).stream().map(this::convertToDto).toList();
             return ResponseEntity.ok(list);
         }
+
+
+
+
+
+
+
+
 }

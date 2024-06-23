@@ -7,11 +7,9 @@ import org.jalcantararivera.mitosales.repo.IProductRepo;
 import org.jalcantararivera.mitosales.service.IProductService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl extends GenericServiceImpl<Product,Integer> implements IProductService {
+public class ProductServiceImpl extends CRUDImpl<Product,Integer> implements IProductService {
 
     private final IProductRepo repo;
     @Override

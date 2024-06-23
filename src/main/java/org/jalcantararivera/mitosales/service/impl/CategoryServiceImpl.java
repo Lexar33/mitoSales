@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl extends GenericServiceImpl<Category,Integer> implements ICategoryService {
+public class CategoryServiceImpl extends CRUDImpl<Category,Integer> implements ICategoryService {
 
     private final ICategoryRepo repo;
 
