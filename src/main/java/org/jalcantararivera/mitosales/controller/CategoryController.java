@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -22,7 +23,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 @RequiredArgsConstructor
-
 public class CategoryController {
 
     //private final CategoryServiceImpl service;
@@ -48,6 +48,8 @@ public class CategoryController {
         return service.validateCategory(new Category(1,"TV","Television",true));
     }
     */
+    //@PreAuthorize("@authServiceImpl.hasAccess('readAll')")
+    //@PreAuthorize("hasAuthority('admin') or hasAuthority('user')")
     @GetMapping
     public ResponseEntity<List<CategoryDTO>>  readAll() throws  Exception{
         //ModelMapper modelMapper= new ModelMapper();

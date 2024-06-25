@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
+@Profile(value={"dev","qa","prod"})
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity // con esto funciona el @PreAuthorize
@@ -52,7 +54,8 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // csrf-> csrf.disable()
                 .authorizeHttpRequests(req-> req
                         .requestMatchers(antMatcher("/login")).permitAll()
-                        .requestMatchers(antMatcher("/rest")).permitAll()
+                        .requestMatchers(antMatcher("/rest/**")).permitAll()
+                        .requestMatchers(antMatcher("/categories/**")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
