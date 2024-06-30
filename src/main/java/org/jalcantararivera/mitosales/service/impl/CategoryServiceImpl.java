@@ -47,6 +47,7 @@ public class CategoryServiceImpl extends CRUDImpl<Category,Integer> implements I
     public List<Category> findAllOrder(String param){
         Sort.Direction direction = param.equalsIgnoreCase("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC;
         return repo.findAll(Sort.by(direction,"name"));
+        ///repo.save()
     }
 
     //@Autowired
@@ -69,9 +70,8 @@ public class CategoryServiceImpl extends CRUDImpl<Category,Integer> implements I
 
         }
     }
-    */
 
-    /*
+
     @Override
     public Category save(Category category) throws Exception {
         return repo.save(category);
@@ -79,7 +79,6 @@ public class CategoryServiceImpl extends CRUDImpl<Category,Integer> implements I
 
     @Override
     public Category update(Category category, Integer id) throws Exception {
-        //VALIDACIONES MAS ADELANTE
         category.setIdCategory(id);
         return repo.save(category);
     }
@@ -98,5 +97,5 @@ public class CategoryServiceImpl extends CRUDImpl<Category,Integer> implements I
     public void delete(Integer id) throws Exception {
         repo.deleteById(id);
     }
-    */
+*/
 }
