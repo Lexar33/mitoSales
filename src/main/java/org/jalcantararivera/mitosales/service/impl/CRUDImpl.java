@@ -5,7 +5,9 @@ import org.jalcantararivera.mitosales.repo.IGenericRepo;
 import org.jalcantararivera.mitosales.service.IGenericService;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public abstract class CRUDImpl<T,ID> implements IGenericService<T,ID> {
 
@@ -44,4 +46,6 @@ public abstract class CRUDImpl<T,ID> implements IGenericService<T,ID> {
         getRepo().findById(id).orElseThrow(()->new ModelNotFoundException("ID NOT FOUND " + id));
         getRepo().deleteById(id);
     }
+
+
 }

@@ -30,17 +30,21 @@ public class CategoryController {
 
     @Qualifier("categoryMapper")
     private final ModelMapper modelMapper;
+
     //INYECCION CON AUTOWIRED
     //@Autowired
-    //private CategoryService service;
+    //private ICategoryService service2;
 
     //INYECCION POR CONSTRUCTOR
     /*
-    public CategoryController(CategoryService service){
-
+    public CategoryController(CategoryServiceImpl service,ModelMapper,modelMapper){
+        this.modelMapper= modelMapper;
         this.service=service;
     }
     */
+
+
+
     /*
     @GetMapping
     public Category getCategorySimple(){
@@ -128,6 +132,8 @@ public class CategoryController {
     public ResponseEntity<Page<CategoryDTO>> findpage(Pageable pageable){
         Page<CategoryDTO> pageCategoryDTO= service.findPage(pageable).map(this::convertToDto);
         return ResponseEntity.ok(pageCategoryDTO);
+
+
     }
 
     @GetMapping("/pagination2")
